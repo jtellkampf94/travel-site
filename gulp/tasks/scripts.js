@@ -1,11 +1,12 @@
 const gulp = require("gulp");
 const webpack = require("webpack");
-const webpackCLI = require("webpack-cli");
 
 gulp.task("scripts", done => {
-  webpack(require("../../webpack.config"), err => {
-    console.log(err);
-    console.log("webpack done!!!!!!!!");
+  webpack(require("../../webpack.config"), (err, stats) => {
+    if (err) {
+      console.log(err.toString());
+    }
+    console.log(stats.toString());
     done();
   });
 });
