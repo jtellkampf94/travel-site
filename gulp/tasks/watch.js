@@ -21,7 +21,11 @@ gulp.task("watch", done => {
 
   gulp.watch(
     ["./app/assets/scripts/**/*.js"],
-    gulp.series(gulp.task("scripts"), gulp.task("scriptsRefresh"))
+    gulp.series(
+      gulp.task("modernizr"),
+      gulp.task("scripts"),
+      gulp.task("scriptsRefresh")
+    )
   );
 
   done();
