@@ -1,7 +1,7 @@
 const gulp = require("gulp");
 const webpack = require("webpack");
 
-gulp.task("scripts", done => {
+gulp.task("beginScripts", done => {
   webpack(require("../../webpack.config"), (err, stats) => {
     if (err) {
       console.log(err.toString());
@@ -10,3 +10,8 @@ gulp.task("scripts", done => {
     done();
   });
 });
+
+gulp.task(
+  "scripts",
+  gulp.series(gulp.task("modernizr"), gulp.task("beginScripts"))
+);
